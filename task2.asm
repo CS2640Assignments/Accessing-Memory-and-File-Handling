@@ -9,18 +9,21 @@ buffer: .space 3633
 
 .text
 main:
+	# opens file in read mode
 	li $v0, 13
 	la $a0, file
 	li $a1, 0
 	syscall
 	move $s0, $v0
 	
+	# reads file and stores it in buffer
 	li $v0, 14
 	move $a0, $s0
 	la $a1, buffer
 	li $a2, 3632
 	syscall
 	
+	# prints file contents
 	li $v0, 4
 	la $a0, buffer
 	syscall
